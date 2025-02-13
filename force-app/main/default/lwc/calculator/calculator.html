@@ -1,0 +1,37 @@
+<template>
+  <lightning-card title="Calculator" icon-name="utility:calculator">
+      <div class="calculator">
+          <!-- Main Grid Layout -->
+          <div class="slds-grid slds-gutters">
+              <!-- Left Side: Display & Keypad -->
+              <div class="slds-col slds-size_2-of-3">
+                  <!-- Display Screen -->
+                  <div class="display">{displayValue}</div>
+
+                  <!-- Numeric Keypad -->
+                  <div class="keypad">
+                      <template for:each={keys} for:item="key">
+                          <button key={key.value} data-value={key.value} onclick={handleButtonClick} class={key.class}>
+                              {key.value}
+                          </button>
+                      </template>
+                  </div>
+              </div>
+
+              <!-- Right Side: Operator Buttons -->
+              <div class="slds-col slds-size_1-of-3 slds-grid slds-grid_vertical slds-m-horizontal_large">
+                  <button data-value="C" onclick={handleButtonClick} class="key clear">C</button>
+                  <button data-value="=" onclick={handleButtonClick} class="key equal slds-m-top_x-small">=</button>
+
+                  <!-- Save Button -->
+                  <lightning-button-icon icon-name="utility:save" alternative-text="Save Calculation" class="save-button slds-m-top_small"
+                      onclick={handleSaveCalculation}></lightning-button-icon>
+
+                  <!-- Search Button -->
+                  <lightning-button-icon icon-name="utility:search" alternative-text="Search Calculation" class="search-button slds-m-top_small"
+                      onclick={handleSearchCalculation}></lightning-button-icon>
+              </div>
+          </div>
+      </div>
+  </lightning-card>
+</template>
