@@ -1,0 +1,12 @@
+<template>
+  <lightning-card title="Calculation History" icon-name="utility:clock">
+      <ul class="history-list">
+          <template for:each={calculations} for:item="calc">
+              <li key={calc} class="history-item">
+                  <lightning-button variant="base" label={calc} onclick={handleSelect} data-value={calc}>
+                  </lightning-button>
+              </li>
+          </template>
+      </ul>
+  </lightning-card>
+</template>

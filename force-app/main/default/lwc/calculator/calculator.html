@@ -32,6 +32,9 @@
                       onclick={handleSearchCalculation}></lightning-button-icon>
               </div>
           </div>
+
+          <!-- Child Component: Displays Calculation History -->
+          <c-calculation-history calculations={calculationHistory} oncalculationselected={handleHistorySelection}></c-calculation-history>
       </div>
   </lightning-card>
 </template>

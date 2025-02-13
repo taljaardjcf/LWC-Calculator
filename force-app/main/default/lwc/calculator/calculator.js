@@ -14,6 +14,7 @@ export default class Calculator extends LightningElement {
   @track firstOperand = null;
   @track operator = null;
   @track waitingForSecondOperand = false;
+  @track calculationHistory = []; // Stores the last five calculations
 
   keys = [{
           value: "7",
@@ -124,6 +125,8 @@ export default class Calculator extends LightningElement {
       this.displayValue = String(parseFloat(result.toFixed(10)));
       this.firstOperand = result;
       this.operator = null;
+      // Store the result in history (only keep last 5 results)
+      this.calculationHistory = [this.displayValue, ...this.calculationHistory].slice(0, 5);
   }
 
   resetCalculator() {
@@ -158,6 +161,10 @@ export default class Calculator extends LightningElement {
       } catch (error) {
           this.showToast('Error', error.body.message, 'error');
       }
+  }
+
+  handleHistorySelection(event) {
+    this.displayValue = event.detail; // Update the display with selected history value
   }
 
   showToast(title, message, variant) {
